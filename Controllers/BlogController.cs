@@ -6,17 +6,28 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace JayAns.Models
 {
     public class BlogController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+private  DbSet<BlogPost> p;
 
         // GET: Blog
-        public ActionResult Index()
+        public ActionResult Index(int? page, string Query)
         {
-            return View(db.BlogPosts.ToList());
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            var p = db.BlogPosts.AsQueryable();
+            if (!String.IsNullOrEmpty(Query))
+            {
+                p = db.BlogPosts.Where(s => s.Title.Contains(Query) || s.Blog.Contains(Query));
+            }
+            return View(p.OrderByDescending(x => x.Created).ToPagedList(pageNumber, pageSize));
         }
 
         // POST: Admin

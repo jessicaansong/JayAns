@@ -240,6 +240,8 @@
     <Content Include="Content\StyleSheet.css" />
     <Content Include="Data Tables\jquery-1.11.3.min.js" />
     <Content Include="Data Tables\jquery.dataTables.min.js" />
+    <Content Include="JQuery Dot Dot Dot\Ellipsis.js" />
+    <Content Include="JQuery Dot Dot Dot\jquery.dotdotdot.js" />
     <Content Include="Template\Documentation.html" />
     <Content Include="Template\HTML Code.html" />
     <Content Include="Template\Template Doc Assets\theme-preview.jpg" />

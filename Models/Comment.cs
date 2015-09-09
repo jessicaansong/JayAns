@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 
+
+
 namespace JayAns.Models
 {
     public class Comment
@@ -19,9 +21,10 @@ namespace JayAns.Models
         public virtual ApplicationUser Author { get; set; }
         public virtual BlogPost Post { get; set; }
     }
-
-    public class CommentDBContext : DbContext
-    {
-        public DbSet<Comment> Comment { get; set; }
-    }
 }
+
+    //public class CommentDBContext : DbContext
+   // {
+   //     public DbSet<Comment> Comment { get; set; }
+  //  }
+// }

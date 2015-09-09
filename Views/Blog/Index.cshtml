@@ -1,139 +1,82 @@
-﻿@model IEnumerable<JayAns.Models.BlogPost>
+﻿@using PagedList.Mvc;
+@using PagedList;
 
 
 
+@model PagedList<JayAns.Models.BlogPost>
 @{
     ViewBag.Title = "Index";
 }
 
-@*<head>
-    <title></title>
+<div  class="container"> <!--container begins -->
 
-    <!--Blog CSS Template -->
-    <link href="~/Blog Template/css/bootstrap-social.css" rel="stylesheet" />
-    <link href="~/Blog Template/css/bootstrap-theme.css" rel="stylesheet" />
-    <link href="~/Blog Template/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/Blog Template/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/Blog Template/css/main.css" rel="stylesheet" />
-    <!--/ Blog CSS Template -->
-    <!--Blog Font Template-->
+    <!--=====LEFT COLUMN ==============-->
+          <div class="row"> <!--/ left column row begins-->
+              <div class="col-sm-12 col-md-8"><!-- /col-sm-12 col md 8 begins -->
+                  <section class="post"> <!--section post begins-->
 
-
-</head>*@
-
-
-
-
-
-<!--Sidebar Begins-->
-
-    <div id="secondary" class="col-sm-3 sidebar" style="display: none;">
-      <aside>
-
-        <div class="about">
-          <h4>Recently Added</h4>
-          <p> Insert Blog Post Here </p>
-        </div>
-        </aside>
-       <!-- <div class="tags">
-          <h4>Tags</h4>
-          <ul>
-            <li>
-              <a href="tag.html" class="label label-danger">CSS3</a>
-            </li>
-            <li>
-              <a href="tag.html" class="label label-primary">HTML5</a>
-            </li>
-          </ul>
-        </div>--> <!-- / tag div-->
-
-       <!--<div class="socialmedia">
-          <h4>Share</h4>
-          <div class="socials-sidebar">
-            <a class="btn btn-facebook" href="#" title="Facebook">
-              <i class="fa fa-facebook"></i>
-            </a>
-            <a class="btn btn-twitter" href="#" title="Twitter">
-              <i class="fa fa-twitter"></i>
-            </a>
-            <a class="btn btn-linkedin" href="#" title="LinkedIn">
-              <i class="fa fa-linkedin"></i>
-            </a>
-            <a class="btn btn-flickr" href="#" title="Flickr">
-              <i class="fa fa-flickr"></i>
-            </a>
-            <a class="btn btn-pinterest" href="#" title="Pinterest">
-              <i class="fa fa-pinterest"></i>
-            </a>
-            <a class="btn btn-tumblr" href="#" title="Tumblr">
-              <i class="fa fa-tumblr"></i>
-            </a>
-            <a class="btn btn-dropbox" href="#" title="Dropbox">
-              <i class="fa fa-dropbox"></i>
-            </a>
-            <a class="btn btn-google-plus" href="#" title="Google+">
-              <i class="fa fa-google-plus"></i>
-            </a>
-            <a class="btn btn-instagram" href="#" title="Instagram">
-              <i class="fa fa-instagram"></i>
-            </a>
-            <a class="btn btn-github" href="#" title="GitHub">
-              <i class="fa fa-github"></i>
-            </a>
-            <a class="btn btn-bitbucket" href="#" title="Bitbucket">
-              <i class="fa fa-bitbucket"></i>
-            </a>
-            <a class="btn btn-vk" href="#" title="VK">
-              <i class="fa fa-vk"></i>
-            </a>
-          </div> <!-- /.socials-sidebar --> <!-- / social media div-->
-        </div><!-- /#secondary -->
-
-<!--/ Sidebar Ends-->
-
-
-    <div  class="container">
-          <div class="row">
-
-              <div class="col-sm-12 col-md-8">
-                  <section class="post">
-                      <header class="entry-header">
+                      <header class="entry-header"><!-- entry header begins-->
                           @foreach (var item in Model)
                           {
                               <img class="entry-avatar" alt="Jessica Ansong" height="52" width="52" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAASBAAAAJGM1OTkwNWE4LWIxNTEtNDBlZC1iZTFiLTBjZjVjNjQzZmI5Mg.jpg">
                               <h2 class="entry-title">@item.Title</h2>
-                              <p class="entry-meta">
+                              <p class="entry-meta"><!--p class-->
                                   Posted on <a class="entry-date" href="date.html">@item.Created</a> | By <a class="entry-author" href="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAASBAAAAJGM1OTkwNWE4LWIxNTEtNDBlZC1iZTFiLTBjZjVjNjQzZmI5Mg.jpg">Jessica Ansong</a> | Tags <a class="label label-danger" href="tag.html">Tag</a>
-                              </p>
-
-
-
-
-                              <div class="entry-description">
-
-                                  @Html.Raw(item.Blog)
-
-
-
-                              </div>
+                              </p> <!--/ p class ends-->
+                              <div class="entry-description"><!--div entry description begins-->
+                                  
+                                  <div class="abc"><!--blog body-->
+                                      <p>@Html.Raw(item.Blog)</p>
+                                  </div><!--/ blog body-->
+                                  <button type="button" class="btn-theme" onclick="location.href='@Url.Action("Details", new { item.Slug})'">Read More</button>
+                                  <hr />
+                              </div> <!--/ entry description-->
                           }
-                      </header>
-                
-                  </section> <!-- /.post -->
-              </div><!-- /left column -->
 
-            <div class="col-sm-12 col-md-4">
+                          <!--=====PAGING DIV==============-->
+                      </header> <!-- / entry header-->
+                            Page  @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                  </section> <!-- /. section post ends -->
+                </div> <!-- /col-sm-12 col md 8 -->
+              
 
-            </div><!-- /right column -->
+    <!--=====RIGHT COLUMN==============-->
+    <div class="col-sm-4">
+                    <div>
+                        Text will display here.
+                    </div>
+                </div><!--/ table display / vertical ends-->
+            </div><!--/ table height / overflow ends here-->
+
+  
+               
+
+ <
+
+        
+      
 
 
-          </div>
-    </div> <!-- /#primary -->
+@section scripts{
 
-    <!-- Scripts -->
-   <script src="~/Blog Template/js/jquery-1.11.0.min.js"></script>
-    <script src="~/Blog Template/js/custom.js"></script>
+    <!--=====JQUERY DOT DOT DOT SCRIPTS==============-->
 
-    <script src="~/Blog Template/js/pace.min.js"></script>
+   
+       <script src="~/JQuery Dot Dot Dot/jquery.dotdotdot.js"></script>
+    <!--=====OTHER SCRIPTS==============-->
+    @*<script src="~/Blog Template/js/custom.js"></script>
+        <script src="~/Blog Template/js/pace.min.js"></script>*@
 
-
+    <script type="text/javascript">
+                $(window).load(function () {
+                console.log("In document ready");
+                $(".abc").dotdotdot({
+                ellipsis: '...',
+                wrap: 'word',
+                watch: true,
+                height: 50,
+                maxHeight: 50
+            });
+        });
+    </script>
+}

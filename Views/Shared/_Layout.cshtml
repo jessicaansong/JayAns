@@ -95,32 +95,26 @@
 
             </div>
 
-            <div id="site-nav" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="sr-only">
-                        <a href="#home" class="scrollto">Home</a>
-                    </li>
-                    <li>
-                        <a href="#portfolio" class="scrollto">My Works</a>
-                    </li>
-                    <li>
-                        <a href="#about" class="scrollto">About Me</a>
-                    </li>
-                    <li>
-                        <a href="#services" class="scrollto">Services</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="scrollto">Contact Me</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "Blog")">Blog</a>
-                    </li>
-                </ul>
-            </div><!--End navbar-collapse -->
+            <!--=== PAGE PRELOADER ===-->
+            <div id="page-loader"><span class="page-loader-gif"></span></div>
 
-        </div><!--End container -->
+            <!-- ==============================================
+    MAIN NAV
+    =============================================== -->
+            <div id="main-nav" class="navbar navbar-fixed-top">
+                <div class="container">
 
-    </div><!--End main-nav -->
+                    <div class="navbar-header">
+
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-nav">
+                            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button>
+
+                        <!-- ======= LOGO ========-->
+                        <a class="navbar-brand scrollto" href="#home">JOHN DOE<br><span>UI Designer</span></a>
+                        <!-- <a class="navbar-brand scrollto ir-logo" href="#">JOHN DOE<br><span>UI Designer</span></a> -->
+
+                  
 
 
     @RenderBody()
