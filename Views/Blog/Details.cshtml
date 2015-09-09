@@ -1,0 +1,50 @@
+﻿@model JayAns.Models.BlogPost
+    @using Microsoft.AspNet.Identity
+
+ 
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(modelItem=>Model.Title)</h2>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-12 col-md-8">
+            <section class="post">
+          
+                    <header class="entry-header">
+                        <img class="entry-avatar" alt="Jessica Ansong" height="52" width="52" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAASBAAAAJGM1OTkwNWE4LWIxNTEtNDBlZC1iZTFiLTBjZjVjNjQzZmI5Mg.jpg">
+
+                        <h2 class="entry-title"><a href="single.html">@Html.DisplayFor(item.Title)</a></h2>
+                        <p class="entry-meta">
+                            Posted on <a class="entry-date" href="date.html">@Html.DisplayFor(modelItem=> Model.Created)</a> | By <a class="entry-author" href="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAASBAAAAJGM1OTkwNWE4LWIxNTEtNDBlZC1iZTFiLTBjZjVjNjQzZmI5Mg.jpg">Jessica Ansong</a> | Tags <a class="label label-danger" href="tag.html">CSS3</a>
+
+                        </p>
+
+                    </header>
+                    <div class="entry-description">
+
+                      @Html.Raw(Model.Blog)
+
+
+
+                    </div>
+                }
+            </section> <!-- /.post -->
+        </div><!-- /left column -->
+
+        <div class="col-sm-12 col-md-4">
+
+        </div><!-- /right column -->
+
+    </div><!-- /row -->
+</div> <!-- /#primary -->
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
